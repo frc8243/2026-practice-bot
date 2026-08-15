@@ -23,9 +23,9 @@ public class Vision {
         // set camera position on robot - measure these values!
         LimelightHelpers.setCameraPose_RobotSpace(
                 limelightName,
-                Units.inchesToMeters(2.0), // forward from robot center (meters, + = forward)
-                Units.inchesToMeters(2.0), // left from robot center (meters, + = left)
-                Units.inchesToMeters(20.0), // up from floor (meters)
+                Units.inchesToMeters(6.0), // forward from robot center (meters, + = forward)
+                Units.inchesToMeters(0.0), // left from robot center (meters, + = left)
+                Units.inchesToMeters(14.75), // up from floor (meters)
                 0.0, // roll (degrees)
                 0.0, // pitch (degrees, + = tilted back)
                 0.0); // yaw (degrees, + = rotated left)
@@ -40,7 +40,7 @@ public class Vision {
     public void updatePose(SwerveDrive drive) {
         // required for MegaTag2 to work
         LimelightHelpers.SetRobotOrientation(
-                limelightName, drive.getYaw().getDegrees(), 0, 0, 0, 0, 0);
+                limelightName, drive.getPose().getRotation().getDegrees(), 0, 0, 0, 0, 0);
 
         // reject if spinning too fast (> 2 rot/sec)
         if (Math.abs(drive.getRobotVelocity().omegaRadiansPerSecond) > (2 * Math.PI * 2)) return;

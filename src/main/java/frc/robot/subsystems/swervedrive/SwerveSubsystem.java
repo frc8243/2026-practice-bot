@@ -64,10 +64,10 @@ public class SwerveSubsystem extends SubsystemBase {
     private final SwerveDrive swerveDrive;
 
     /** Enable vision odometry updates while driving. */
-    private final boolean visionDriveTest = false;
+    private final boolean visionDriveTest = true;
 
     /** Limlight class to keep an accurate odometry. LL4 IP--> http://10.82.43.15:5800 */
-    private Vision vision = new Vision("");
+    private Vision vision = new Vision("limelight-main");
 
     /**
      * Initialize {@link SwerveDrive} with the directory provided.
