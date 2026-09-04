@@ -98,12 +98,20 @@ public class Vision {
                 est.timestampSeconds,
                 VecBuilder.fill(stddevs[6], stddevs[7], Double.POSITIVE_INFINITY));
 
-        SmartDashboard.putBoolean("vision/measurementAccepted", true);
-        SmartDashboard.putString("vision/rejectReason", "");
+        // SmartDashboard.putBoolean("vision/measurementAccepted", true);
+        // SmartDashboard.putString("vision/rejectReason", "");
+        accept();
     }
 
     private void reject(String why) {
         SmartDashboard.putBoolean("Vision/measurementAccepted", false);
         SmartDashboard.putString("Vision/rejection", why);
+        SmartDashboard.putString("Vision/TagIDs", "");
     }
+
+   private void accept() {
+    SmartDashboard.putBoolean("Vision/measurmentAccepted", true);
+    SmartDashboard.putString("Vision/rejection", "");
+   }
+
 }
