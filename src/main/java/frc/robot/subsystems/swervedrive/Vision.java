@@ -16,7 +16,7 @@ public class Vision {
 
     public Vision(String limelightName) {
         this.limelightName = limelightName;
-        System.out.println("limelight " + limelightName);
+        // System.out.println("limelight " + limelightName);
 
         // set camera position on robot - measure these values!
         LimelightHelpers.setCameraPose_RobotSpace(
@@ -57,7 +57,7 @@ public class Vision {
             return;
         }
 
-        System.out.println("VISION " + limelightName);
+        // System.out.println("VISION " + limelightName);
 
         var est = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2(limelightName);
         if (est == null) {
@@ -109,9 +109,8 @@ public class Vision {
         SmartDashboard.putString("Vision/TagIDs", "");
     }
 
-   private void accept() {
-    SmartDashboard.putBoolean("Vision/measurmentAccepted", true);
-    SmartDashboard.putString("Vision/rejection", "");
-   }
-
+    private void accept() {
+        SmartDashboard.putBoolean("Vision/measurementAccepted", true);
+        SmartDashboard.putString("Vision/rejection", "");
+    }
 }
