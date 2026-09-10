@@ -66,7 +66,7 @@ public class SwerveSubsystem extends SubsystemBase {
     /** Enable vision odometry updates while driving. */
     private final boolean visionDriveTest = true;
 
-    /** Limlight class to keep an accurate odometry. LL4 IP--> http://10.82.43.15:5800 */
+    /** Limelight class to keep an accurate odometry. LL4 IP--> http://10.82.43.15:5800 */
     private Vision vision = new Vision("limelight-main");
 
     /**
@@ -265,7 +265,7 @@ public class SwerveSubsystem extends SubsystemBase {
                     // horizontal error to target
                     double tx = LimelightHelpers.getTX("limelight-main"); // degrees
 
-                    // proportinal control (tune this)
+                    // proportional control (tune this)
                     double kp = 0.035;
                     double rotationspeed = -kp * tx;
 
@@ -556,9 +556,9 @@ public class SwerveSubsystem extends SubsystemBase {
      * robot-relative modes, which affect how the translation vector is used.
      *
      * @param translation {@link Translation2d} that is the commanded linear velocity of the robot,
-     *     in meters per second. In robot-relative mode, positive x is torwards the bow (front) and
-     *     positive y is torwards port (left). In field-relative mode, positive x is away from the
-     *     alliance wall (field North) and positive y is torwards the left wall when looking through
+     *     in meters per second. In robot-relative mode, positive x is towards the bow (front) and
+     *     positive y is towards port (left). In field-relative mode, positive x is away from the
+     *     alliance wall (field North) and positive y is towards the left wall when looking through
      *     the driver station glass (field West).
      * @param rotation Robot angular rate, in radians per second. CCW positive. Unaffected by
      *     field/robot relativity.
@@ -702,7 +702,7 @@ public class SwerveSubsystem extends SubsystemBase {
     /**
      * This will zero (calibrate) the robot to assume the current position is facing forward
      *
-     * <p>If red alliance rotate the robot 180 after the drviebase zero command
+     * <p>If red alliance rotate the robot 180 after the drivebase zero command
      */
     public void zeroGyroWithAlliance() {
         if (isRedAlliance()) {

@@ -11,7 +11,7 @@ import swervelib.SwerveDrive;
 public class Vision {
 
     private final String limelightName;
-
+    private double lastTimestamp = -1;
     private final StructPublisher<Pose2d> posePublisher;
 
     public Vision(String limelightName) {
@@ -72,6 +72,12 @@ public class Vision {
             reject("x and y are 0");
             return;
         }
+
+        if (est.timestampSeconds == lastTimestamp) {
+            reject("stale - no new frame");
+            return;
+        }
+        lastTimestamp = est.timestampSeconds;
 
         // publish pose to NT for AdvantageScope/Shuffleboard
         posePublisher.set(est.pose);
