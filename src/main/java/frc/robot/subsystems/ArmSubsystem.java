@@ -104,6 +104,16 @@ public class ArmSubsystem extends SubsystemBase {
                 });
     }
 
+    /** Drives the wrist to the given angle and holds it there until interrupted. */
+    public Command holdWristAngleCommand(WristAngle target) {
+        return this.run(() -> goToWristAngle(target.getAngle()))
+                .beforeStarting(
+                        () -> {
+                            this.angleEnum = target;
+                            System.out.println("Move Wrist to " + target);
+                        });
+    }
+
     public void stop() {
         armWristMotor.set(0.0);
     }
